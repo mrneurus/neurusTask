@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,500" rel="stylesheet">
+        link(rel="stylesheet", href="css/normalize.css")
+        link(rel="stylesheet", href="css/app.css")
+        title #{titlePage}
+    body
+        header.barra
+            h1 NeurusTask
+            a(href="#") Cerrar Sesión
+        
+        main.contenedor
+            aside.contenedor-proyectos
+                .panel.crear-proyecto
+                    a.boton(href="/nuevo-proyecto") Nuevo
+                        span + 
+               
+                .panel.lista-proyectos
+                    h2 Proyectos
+                    ul#proyectos.proyectos
+                        li
+                            a(href="") Diseño de pagina
+                        li
+                            a(href="") Diseño de base de datos
+
+
+            block contenido
+                
+            
+            
+        
+            

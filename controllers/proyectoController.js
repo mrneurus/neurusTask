@@ -1,3 +1,7 @@
+// importamos el modelo
+const proyectos = require('../models/proyectos')
+const slug = require('slug')
+
 exports.proyectosHome = (req,res)=>{
     res.render('index',{
         titlePage:'NeurusTask'
@@ -10,13 +14,14 @@ exports.formProyecto = (req,res)=>{
     })
 } 
 
-exports.agregarProyecto = (req,res) => {
+exports.agregarProyecto = async (req,res) => {
 
-        // console.log(req.body);
+       /*  console.log(req.body); */
         
         // validar input
         const {nombre} = req.body
-        console.log = nombre
+        const {val} = req.body.nombre //nose porqu no me capta el {nombre}, cree un objeto ue solo valida
+        console.log(req.body.nombre)
 
         let errores = []
 
@@ -31,9 +36,13 @@ exports.agregarProyecto = (req,res) => {
                 errores
             })
             
-         }
-         else{
-            res.send('enviado a la BD')
+         }else{
+
+        const url = (slug(nombre).toLocaleLowerCase())
+        const project = await proyectos.create({nombre,url });
+        res.redirect('/')
+            // .then( () => console.log('Insertado en Mysql'))
+            // .catch( error => console.log(error)  )
+         /* console.log({nombre}) */
         }
-    
 }
